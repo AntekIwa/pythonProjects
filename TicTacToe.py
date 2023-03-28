@@ -17,7 +17,7 @@ def ifWin():
             return 1
     return 2
 
-//comment
+#comment
 
 move = 0
 players = ['O', 'X'];
