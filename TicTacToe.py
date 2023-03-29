@@ -13,7 +13,6 @@ def ifWin():
         return 0
     for i in range(0, 9):
         if board[i] == ' ':
-
             return 1
     return 2
 
