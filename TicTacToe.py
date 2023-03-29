@@ -28,7 +28,17 @@ while ifWin() == 1:
     print("-------------")
     print(board[6], " | ", board[7], " | ", board[8])
     move += 1
+    ds = 0;
     position = int(input())
+    while (ds == 0):
+        if (position < 0 or position > 8):
+            print("wartość spoza zakresu")
+            position = int(input())
+        elif (board[position] != ' '):
+            print("pole zajęte")
+            position = int(input())
+        else:
+            ds = 1
     board[position] = players[move % 2]
 
 print(board[0], " | ", board[1], " | ", board[2])
