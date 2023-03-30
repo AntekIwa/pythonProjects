@@ -1,6 +1,8 @@
 plansze = [[' ', ' ', ' ',' ', ' ', ' ',' ', ' ', ' ']]
 pozycjeWygrane = []
 graph = []
+winTree = []
+drawTree = []
 #362 880
 for i in range(0, 10**6):
     pozycjeWygrane.append(-1)
@@ -21,24 +23,33 @@ def dfs(node):
         if porazki > 0:
             if remisy > 0:
                pozycjeWygrane[node] = 6
+               winTree.append(neighbour)
+               drawTree.append(neighbour)
             else:
                 pozycjeWygrane[node] = 5
+                winTree.append(neighbour)
         else:
             if remisy > 0:
                 pozycjeWygrane[node] = 3
+                winTree.append(neighbour)
+                drawTree.append(neighbour)
             else:
                 pozycjeWygrane[node] = 0
+                winTree.append(neighbour)
 
     else:
         if porazki > 0:
             if remisy == 0:
                 pozycjeWygrane[node] = 1
+                winTree.append(neighbour)
             else:
                 pozycjeWygrane[node] = 4
+                drawTree.append(neighbour)
 
         else:
             if remisy > 0:
                 pozycjeWygrane[node] = 2
+                drawTree.append(neighbour)
 
 
 def prtBoard(board):
