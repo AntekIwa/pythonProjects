@@ -7,7 +7,7 @@ for i in range(0, 10**6):
     graph.append([])
 #0 - wygrana | 1 - przegrana | 2 - remis | 3 - remis/wygrana | 4 - remis/porazka | 5 - porazka/wygrana | 6 - porazka/wygrana/remis
 
-def dfs(node):  #function for dfs
+def dfs(node):
     wygrane = 0
     porazki = 0
     remisy = 0
@@ -15,7 +15,7 @@ def dfs(node):  #function for dfs
         dfs(neighbour)
         if pozycjeWygrane[neighbour] == 0: wygrane+=1
         elif pozycjeWygrane[neighbour] == 1: porazki+=1
-        else: remisy+=1
+        elif pozycjeWygrane[neighbour] == 2: remisy+=1
 
     if wygrane > 0:
         if porazki > 0:
