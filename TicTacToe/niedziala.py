@@ -81,7 +81,7 @@ def ifWin(board):
 moves = ['X', 'O']
 cnt = 0
 def gen(numer,ruch, board):
-    plansze[numer] = board
+    plansze[numer] = board.copy()
     #print(plansze[len(plansze) - 1])
     #print(numer)
     prtBoard(board)
