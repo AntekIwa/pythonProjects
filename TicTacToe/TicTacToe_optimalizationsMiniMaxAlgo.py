@@ -96,9 +96,9 @@ def if_win(board):
 
 def generating_boards(board_number, move):
     if if_win(decode_number(board_number)) < 2:
-        minimax_array[board_number] = if_win(decode_number(board_number))
+        minimax_array[board_number] = if_win(decode_number(board_number)) - move
         return
-    minimax_neighburs = []
+    minimax_neighbours = []
     empty_idx = empty_squares(decode_number(board_number))
     for idx in empty_idx:
         if move % 2 == 0:
@@ -106,34 +106,34 @@ def generating_boards(board_number, move):
         else:
             u = board_number + (3 ** idx)
         if minimax_array[u] == 2: generating_boards(u, move + 1)
-        minimax_neighburs.append(minimax_array[u])
+        minimax_neighbours.append(minimax_array[u])
     if move % 2 == 0:
-        minimax_array[board_number] = max(minimax_neighburs)
+        minimax_array[board_number] = max(minimax_neighbours)
     else:
-        minimax_array[board_number] = min(minimax_neighburs)
+        minimax_array[board_number] = min(minimax_neighbours)
 
 
 def best_move(board_number, move):
-    minimax_neighburs = []
-    neighburs = []
+    minimax_neighbours = []
+    neighbours = []
     empty_idx = empty_squares(decode_number(board_number))
     for idx in empty_idx:
         if move % 2 == 0:
             u = board_number + 2 * (3 ** idx)
         else:
             u = board_number + (3 ** idx)
-        minimax_neighburs.append(minimax_array[u])
-        neighburs.append(u)
+        minimax_neighbours.append(minimax_array[u])
+        neighbours.append(u)
     if move % 2 == 0:
-        return neighburs[minimax_neighburs.index(max(minimax_neighburs))]
+        return neighbours[minimax_neighbours.index(max(minimax_neighbours))]
     else:
-        return neighburs[minimax_neighburs.index(min(minimax_neighburs))]
+        return neighbours[minimax_neighbours.index(min(minimax_neighbours))]
 
 
 def game():
     move = 0;
     board = 0
-    print("1 - AI, 2 - You")
+    print("Choose who you want to be, 1 or 2")
     who = int(input())
     if who == 2:
         pos = int(input())
